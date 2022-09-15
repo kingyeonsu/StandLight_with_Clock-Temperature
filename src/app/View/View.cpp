@@ -47,10 +47,22 @@ void View::lightView()
     }
 }
 
+void View::warningLightOff()
+{
+    char warningBuff[20];
+    sprintf(warningBuff, "WARNING!!");
+    lcd->WriteStringXY(0, 0, warningBuff);
+    light1->Off();
+    light2->Off();
+    light3->Off();
+    light4->Off();
+    light5->Off();
+}
+
 void View::lightOff()
 {
     char buff[20];
-    sprintf(buff, "POWER OFF          ");
+    sprintf(buff, "POWER OFF");
     lcd->WriteStringXY(0, 0, buff);
     lcd->backLightOff();
 
@@ -64,7 +76,7 @@ void View::lightOff()
 void View::lightOn_1()
 {
     char buff[20];
-    sprintf(buff, "POWER ON1          ");
+    sprintf(buff, "POWER ON1");
     lcd->WriteStringXY(0, 0, buff);
     lcd->backLightOn();
 
@@ -78,7 +90,7 @@ void View::lightOn_1()
 void View::lightOn_2()
 {
     char buff[20];
-    sprintf(buff, "POWER ON2          ");
+    sprintf(buff, "POWER ON2");
     lcd->WriteStringXY(0, 0, buff);
     lcd->backLightOn();
 
@@ -91,7 +103,7 @@ void View::lightOn_2()
 void View::lightOn_3()
 {
     char buff[20];
-    sprintf(buff, "POWER ON3          ");
+    sprintf(buff, "POWER ON3");
     lcd->WriteStringXY(0, 0, buff);
     lcd->backLightOn();
 
@@ -105,7 +117,7 @@ void View::lightOn_3()
 void View::lightOn_4()
 {
     char buff[20];
-    sprintf(buff, "POWER ON4          ");
+    sprintf(buff, "POWER ON4");
     lcd->WriteStringXY(0, 0, buff);
     lcd->backLightOn();
 
@@ -119,7 +131,7 @@ void View::lightOn_4()
 void View::lightOn_5()
 {
     char buff[20];
-    sprintf(buff, "POWER ON5          ");
+    sprintf(buff, "POWER ON5");
     lcd->WriteStringXY(0, 0, buff);
     lcd->backLightOn(); 
 

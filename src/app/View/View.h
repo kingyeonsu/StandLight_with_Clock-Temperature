@@ -25,6 +25,7 @@ public:
     void lightOn_4();
     void lightOn_5();
     void lightOff();
+    void warningLightOff();
 
 };
 

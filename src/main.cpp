@@ -11,6 +11,8 @@
 #include "ClockService.h"
 #include "ClockCheck.h"
 #include "I2C.h"
+#include "DHT11.h"
+#include "DHT_Data.h"
 
 int main()
 {
@@ -24,14 +26,19 @@ int main()
     Led led3(23);
     Led led4(24);
     Led led5(25);
+    DHT11 dht(7);
     LCD lcd(new I2C("/dev/i2c-1", 0x27));
     View view(&led1, &led2, &led3, &led4, &led5, &lcd);
+    TempHumidView temphumidview(&lcd, &view);
     ClockView clockView(&lcd);
     Service service(&view);
+    TempHumidService temphumidservice(&temphumidview);
     ClockService clockService(&clockView);
-    Controller control(&service, &clockService);
-    Listener listener(&modeButton, &powerButton, &control, &clockCheck);
+    Controller control(&service, &clockService, &temphumidservice);
+    Listener listener(&modeButton, &powerButton, &control, &clockCheck, &dht);
     
+// DHT_Data dhtData;
+
     while (1)
     {
         listener.checkEvent();
